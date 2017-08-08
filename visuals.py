@@ -68,7 +68,7 @@ def evaluate(results, accuracy, f1):
     
     # Super loop to plot four panels of data
     for k, learner in enumerate(results.keys()):
-        for j, metric in enumerate(['train_time', 'acc_train', 'f_train', 'pred_time', 'acc_test', 'f_test']):
+        for j, metric in enumerate(['train_time', 'acc_train', 'f_train', 'pred_time', 'acc_val', 'f_val']):
             for i in np.arange(3):
                 
                 # Creative plot code
@@ -91,8 +91,8 @@ def evaluate(results, accuracy, f1):
     ax[0, 1].set_title("Accuracy Score on Training Subset")
     ax[0, 2].set_title("F-score on Training Subset")
     ax[1, 0].set_title("Model Predicting")
-    ax[1, 1].set_title("Accuracy Score on Testing Set")
-    ax[1, 2].set_title("F-score on Testing Set")
+    ax[1, 1].set_title("Accuracy Score on Validation Set")
+    ax[1, 2].set_title("F-score on Validation Set")
     
     # Add horizontal lines for naive predictors
     ax[0, 1].axhline(y = accuracy, xmin = -0.1, xmax = 3.0, linewidth = 1, color = 'k', linestyle = 'dashed')
