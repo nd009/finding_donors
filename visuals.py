@@ -129,8 +129,18 @@ def feature_plot(importances, X_train, y_train):
     # Creat the plot
     fig = pl.figure(figsize = (9,5))
     pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
-    pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
-          label = "Feature Weight")
+    rects = pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
+                label = "Feature Weight")
+    
+    # add text label on each bar
+    for rect in rects:
+        height = rect.get_height()
+        pl.text(rect.get_x() + rect.get_width()/2., 
+                1.01*height, 
+                '%.2f' % height,
+                ha='center', 
+                va='bottom')
+    
     # Detect if xlabels are too long
     rotation = 0 
     for i in columns:
@@ -144,4 +154,5 @@ def feature_plot(importances, X_train, y_train):
     
     pl.legend(loc = 'upper center')
     pl.tight_layout()
-    pl.show()  
+    pl.show() 
+ 
