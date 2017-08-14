@@ -132,11 +132,17 @@ def feature_plot(importances, X_train, y_train):
     rects = pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
                 label = "Feature Weight")
     
+    # make bar chart higher to fit the text label
+    axes = pl.gca()
+    axes.set_ylim([0, np.max(values) * 1.1])
+
     # add text label on each bar
+    delta = np.max(values) * 0.02
+    
     for rect in rects:
         height = rect.get_height()
         pl.text(rect.get_x() + rect.get_width()/2., 
-                1.01*height, 
+                height + delta, 
                 '%.2f' % height,
                 ha='center', 
                 va='bottom')
