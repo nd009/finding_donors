@@ -115,7 +115,7 @@ def evaluate(results, accuracy, f1):
     
     # Aesthetics
     pl.suptitle("Performance Metrics for Three Supervised Learning Models", fontsize = 16, y = 1.10)
-    pl.tight_layout()
+    pl.subplots_adjust(top=0.85, bottom=0., left=0.10, right=0.95, hspace=0.3,wspace=0.35)
     pl.show()
     
 
